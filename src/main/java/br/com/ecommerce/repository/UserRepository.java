@@ -1,6 +1,6 @@
-package com.ecommerce.demo.repository;
+package br.com.ecommerce.repository;
 
-import com.ecommerce.demo.entity.User;
+import br.com.ecommerce.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

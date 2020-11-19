@@ -1,4 +1,4 @@
-package com.ecommerce.demo.service;
+package br.com.ecommerce.service;
 
 import org.springframework.stereotype.Service;
 

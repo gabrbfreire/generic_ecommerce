@@ -1,12 +1,10 @@
-package com.ecommerce.demo.controller;
+package br.com.ecommerce.controller;
 
-import com.ecommerce.demo.entity.User;
-import com.ecommerce.demo.service.CartService;
-import com.ecommerce.demo.service.UserService;
+import br.com.ecommerce.entity.User;
+import br.com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,8 +14,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private CartService cartService;
+
 
 //  -----USER-----
 //  Login
@@ -52,14 +49,6 @@ public class UserController {
         }
     }
 
-    //Create cart
-    @PostMapping(path="addCart")
-    public ResponseEntity<HttpStatus> addCart(@SessionAttribute("user") User user) {
-        try{
-            cartService.addNewCart(user);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+
+
 }

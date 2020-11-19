@@ -1,7 +1,7 @@
-package com.ecommerce.demo.service;
+package br.com.ecommerce.service;
 
-import com.ecommerce.demo.entity.User;
-import com.ecommerce.demo.repository.UserRepository;
+import br.com.ecommerce.repository.UserRepository;
+import br.com.ecommerce.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.ecommerce.demo.service;
+package br.com.ecommerce.service;
 
-import com.ecommerce.demo.entity.Product;
-import com.ecommerce.demo.repository.ProductRepository;
+import br.com.ecommerce.repository.ProductRepository;
+import br.com.ecommerce.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
