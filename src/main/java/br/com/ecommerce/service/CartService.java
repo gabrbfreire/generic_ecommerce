@@ -23,7 +23,7 @@ public class CartService {
         cartRepository.save(newCart);
     }
 
-    public Cart getCartByUserId(User user){
+    public Cart getCartByUser(User user){
         return cartRepository.getCartByUserId(user.getUser_id());
     }
 

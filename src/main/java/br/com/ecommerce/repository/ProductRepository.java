@@ -10,6 +10,10 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     // Stored Procedures
+
+    //void = @Procedure
+    //anyReturnTypeButVoid = @Query
+
     @Query(value = "CALL SelectProductsByName(:name)", nativeQuery = true)
     List<Product> findProductsByName(@Param("name") String name);
 }

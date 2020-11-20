@@ -49,6 +49,14 @@ public class UserController {
         }
     }
 
-
-
+    //--------------------
+    //Get session
+    @GetMapping(path = "getSession")
+    public ResponseEntity<Integer> addNewUser (@SessionAttribute("user") User user){
+        try{
+            return new ResponseEntity<>(user.getUser_id(), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

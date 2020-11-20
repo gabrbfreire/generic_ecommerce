@@ -1,9 +1,9 @@
 package br.com.ecommerce.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import javax.persistence.*;
 
 @Entity(name = "carts")
 public class Cart {

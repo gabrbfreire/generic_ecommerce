@@ -10,6 +10,10 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     // Stored Procedures
+
+    //void = @Procedure
+    //anyReturnTypeButVoid = @Query
+
     @Query(value = "CALL SelectUserByEmail(:email)", nativeQuery = true)
     List<User> findUserByEmail(@Param("email") String email);
 }

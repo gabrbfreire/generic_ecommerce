@@ -3,8 +3,13 @@ package br.com.ecommerce.service;
 import br.com.ecommerce.entity.CartItem;
 import br.com.ecommerce.entity.User;
 import br.com.ecommerce.repository.CartItemRepository;
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartItemService {
@@ -14,11 +19,41 @@ public class CartItemService {
     @Autowired
     CartService cartService;
 
-    public void addItemToUserCart(Integer productId, Integer productQuantity, User user) {
+    public void addItemUserCart(Integer productId, Integer productQuantity, User user) {
         CartItem newCartItem = new CartItem();
         newCartItem.setProduct_id(productId);
         newCartItem.setProduct_quantity(productQuantity);
-        newCartItem.setCart_id(cartService.getCartByUserId(user).getCart_id());
+        newCartItem.setCart_id(cartService.getCartByUser(user).getCart_id());
         cartItemRepository.save(newCartItem);
+    }
+
+    public void removeItemUserCart(Integer cartItemId) throws Exception {
+        Optional<CartItem> cartItemOptional = cartItemRepository.findById(cartItemId);
+
+        if(cartItemOptional.isPresent()){
+            cartItemRepository.deleteById(cartItemId);
+        }else{
+            throw new Exception("Item does not exist");
+        }
+    }
+
+    public void updateItemQuantityUserCart(Integer cartItemId, Integer productQuantity) throws Exception {
+        Optional<CartItem> cartItemOptional = cartItemRepository.findById(cartItemId);
+
+        if(cartItemOptional.isPresent()){
+            CartItem cartItem = cartItemOptional.get();
+            cartItem.setProduct_quantity(productQuantity);
+            cartItemRepository.save(cartItem);
+        }else {
+            throw new Exception("Item does not exist");
+        }
+    }
+
+    public List<CartItem> getItemsUserCart(User user) {
+        return cartItemRepository.getCartItemsByCartId(cartService.getCartByUser(user).getCart_id());
+    }
+
+    public void removeAllItemsUserCart(User user) {
+        cartItemRepository.removeAllItemsUserCart(cartService.getCartByUser(user).getCart_id());
     }
 }

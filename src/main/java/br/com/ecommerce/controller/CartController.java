@@ -41,8 +41,7 @@ public class CartController {
     @GetMapping(path = "getUserCart")
     public ResponseEntity<Cart> getCart(@SessionAttribute("user") User user){
         try {
-            System.out.println(user.getUser_id());
-            return new ResponseEntity<>(cartService.getCartByUserId(user), HttpStatus.OK);
+            return new ResponseEntity<>(cartService.getCartByUser(user), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
