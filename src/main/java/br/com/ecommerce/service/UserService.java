@@ -3,6 +3,7 @@ package br.com.ecommerce.service;
 import br.com.ecommerce.repository.UserRepository;
 import br.com.ecommerce.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -31,7 +32,11 @@ public class UserService {
         User newUser = new User();
         newUser.setUser_name(name);
         newUser.setUser_email(email);
-        newUser.setUser_password(password);
+
+        //Password hashing
+        String passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(10));
+        System.out.println(passwordHashed);
+        newUser.setUser_password(passwordHashed);
         repo.save(newUser);
     }
 
@@ -44,7 +49,8 @@ public class UserService {
         if(userList.isEmpty()){
             return null;
         }else{
-            if(password.equals(userList.get(0).getUser_password())){
+            //Checks password
+            if(BCrypt.checkpw(password, userList.get(0).getUser_password())){
                 return userList.get(0);
             }else{
                 return null;
