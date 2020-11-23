@@ -1,3 +1,22 @@
+html{
+    overflow-x: hidden;
+}
+
 body {
     padding-top: 56px;
+}
+
+input{
+    box-sizing: border-box;
+    max-width: 100% !important; 
+}
+
+.categories-item{
+    transition: 0.3s;
+}
+
+.categories-item:hover {
+    cursor: pointer;
+    background-color: #6c757d;
+    color: white;
 }
