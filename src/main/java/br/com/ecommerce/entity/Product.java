@@ -13,6 +13,7 @@ public class Product {
     private Integer product_id;
     private String product_name;
     private Double product_price;
+    private Integer categories_id;
 
     public Integer getProduct_id() {
         return product_id;
@@ -32,5 +33,13 @@ public class Product {
 
     public void setProduct_price(Double product_price) {
         this.product_price = product_price;
+    }
+
+    public Integer getCategories_id() {
+        return categories_id;
+    }
+
+    public void setCategories_id(Integer categories_id) {
+        this.categories_id = categories_id;
     }
 }
