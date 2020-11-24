@@ -13,10 +13,11 @@ public class ProductService {
     @Autowired
     private ProductRepository repo;
 
-    public void addNewProduct(String name, Double price){
+    public void addNewProduct(String name, Double price, Integer category){
         Product newProduct = new Product();
         newProduct.setProduct_name(name);
         newProduct.setProduct_price(price);
+        newProduct.setCategories_id(category);
         repo.save(newProduct);
     }
 

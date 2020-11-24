@@ -34,9 +34,9 @@ public class ProductController {
     }
 
     @PostMapping(path = "/product")
-    public ResponseEntity<HttpEntity> addProduct(@RequestParam String name, @RequestParam Double price){
+    public ResponseEntity<HttpEntity> addProduct(@RequestParam String name, @RequestParam Double price, @RequestParam Integer category){
         try {
-            productService.addNewProduct(name, price);
+            productService.addNewProduct(name, price, category);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
