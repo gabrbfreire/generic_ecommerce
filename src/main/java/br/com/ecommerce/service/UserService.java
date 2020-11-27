@@ -35,7 +35,6 @@ public class UserService {
 
         //Password hashing
         String passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(10));
-        System.out.println(passwordHashed);
         newUser.setUser_password(passwordHashed);
         userRepository.save(newUser);
     }
