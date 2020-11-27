@@ -16,4 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "CALL SelectProductsByName(:name)", nativeQuery = true)
     List<Product> findProductsByName(@Param("name") String name);
+
+    @Query(value = "CALL SelectProductsByCategoryId(:categoryId)", nativeQuery = true)
+    List<Product> getProductsByCategoryId(@Param("categoryId") Integer categoryId);
 }

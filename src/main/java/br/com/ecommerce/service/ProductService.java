@@ -11,17 +11,21 @@ import java.util.List;
 public class ProductService {
 
     @Autowired
-    private ProductRepository repo;
+    private ProductRepository productRepository;
 
     public void addNewProduct(String name, Double price, Integer category){
         Product newProduct = new Product();
         newProduct.setProduct_name(name);
         newProduct.setProduct_price(price);
         newProduct.setCategories_id(category);
-        repo.save(newProduct);
+        productRepository.save(newProduct);
     }
 
     public List<Product> getProductsByName(String name){
-        return repo.findProductsByName(name);
+        return productRepository.findProductsByName(name);
+    }
+
+    public List<Product> getProductsByCategoryId(Integer categoryId) {
+        return productRepository.getProductsByCategoryId(categoryId);
     }
 }

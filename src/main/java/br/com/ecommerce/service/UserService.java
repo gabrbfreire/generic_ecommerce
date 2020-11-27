@@ -11,21 +11,21 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository repo;
+    private UserRepository userRepository;
     //public List<User> listAll(){
-//        return repo.findAll();
+//        return userRepository.findAll();
 //    }
 //
 //    public void save(User user){
-//        repo.save(user);
+//        userRepository.save(user);
 //    }
 //
 //    public User get(Integer id){
-//        return repo.findById(id).get();
+//        return userRepository.findById(id).get();
 //    }
 //
 //    public void delete(Integer id){
-//        repo.deleteById(id);
+//        userRepository.deleteById(id);
 //    }
 
     public void addNewUser(String name, String email, String password){
@@ -37,14 +37,14 @@ public class UserService {
         String passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(10));
         System.out.println(passwordHashed);
         newUser.setUser_password(passwordHashed);
-        repo.save(newUser);
+        userRepository.save(newUser);
     }
 
     //Finds user by email and checks password
     public User findUserByEmail(String email, String password) {
 
         //Gets data from repository
-        List<User> userList = repo.findUserByEmail(email);
+        List<User> userList = userRepository.findUserByEmail(email);
 
         if(userList.isEmpty()){
             return null;

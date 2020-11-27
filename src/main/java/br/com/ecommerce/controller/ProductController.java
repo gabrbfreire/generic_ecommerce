@@ -21,7 +21,7 @@ public class ProductController {
 
     //Search bar
     //If String inserted on search input is of size 4 or more will return a list of matches
-    @GetMapping(path = "/product")
+    @GetMapping(path = "/getProductsByName")
     public ResponseEntity<List<Product>> getProductsByName(@RequestParam String name){
         if(name.length() > 3) {
             try {
@@ -33,7 +33,16 @@ public class ProductController {
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/product")
+    @GetMapping(path = "/getProductsByCategoryId")
+    public ResponseEntity<List<Product>> getProductsByCategoryId(@RequestParam Integer categoryId){
+        try {
+            return new ResponseEntity<>(productService.getProductsByCategoryId(categoryId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping(path = "/addProduct")
     public ResponseEntity<HttpEntity> addProduct(@RequestParam String name, @RequestParam Double price, @RequestParam Integer category){
         try {
             productService.addNewProduct(name, price, category);
