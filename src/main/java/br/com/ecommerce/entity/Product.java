@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity(name = "products")
 public class Product {
-
+//TODO: Add product description and photo
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
