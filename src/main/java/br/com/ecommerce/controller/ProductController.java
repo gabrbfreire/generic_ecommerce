@@ -42,7 +42,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping(path = "/addProduct")
+    @PostMapping(path = "/addProduct")
     public ResponseEntity<HttpEntity> addProduct(@RequestParam String name, @RequestParam Double price, @RequestParam Integer category){
         try {
             productService.addNewProduct(name, price, category);
