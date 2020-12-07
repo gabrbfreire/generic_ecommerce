@@ -21,8 +21,8 @@ public class ProductController {
 
     //Search bar
     //If String inserted on search input is of size 4 or more will return a list of matches
-    @GetMapping(path = "/getProductsByName")
-    public ResponseEntity<List<Product>> getProductsByName(@RequestParam String name){
+    @GetMapping(path = "/getProductsByNameAjax")
+    public ResponseEntity<List<Product>> getProductsByNameAjax(@RequestParam String name){
         if(name.length() > 3) {
             try {
                 return new ResponseEntity<>(productService.getProductsByName(name), HttpStatus.OK);
@@ -31,6 +31,15 @@ public class ProductController {
             }
         }
         return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/getProductsList")
+    public ResponseEntity<List<Product>> getProductsList(@RequestParam String name){
+        try {
+            return new ResponseEntity<>(productService.getProductsByName(name), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping(path = "/getProductsByCategoryId")
