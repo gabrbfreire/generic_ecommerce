@@ -14,6 +14,6 @@ public class CategoryService {
     CategoryRepository categoryRepository;
 
     public List<Category> getAllCategories(){
-        return categoryRepository.findAll();
+        return (List<Category>) categoryRepository.findAll();
     }
 }

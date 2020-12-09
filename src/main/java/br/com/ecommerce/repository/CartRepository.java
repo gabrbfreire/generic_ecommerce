@@ -4,10 +4,11 @@ import br.com.ecommerce.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 
-public interface CartRepository extends JpaRepository<Cart, Integer> {
+public interface CartRepository extends CrudRepository<Cart, Integer> {
 
     // Stored Procedures
 

@@ -1,13 +1,9 @@
 package br.com.ecommerce.service;
 
-import br.com.ecommerce.entity.CartItem;
 import br.com.ecommerce.repository.ProductRepository;
 import br.com.ecommerce.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
