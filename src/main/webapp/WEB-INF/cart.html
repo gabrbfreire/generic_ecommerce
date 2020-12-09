@@ -43,30 +43,44 @@
     </div>
   </nav>
 
-  <!--Search Bar-->
-  <form class="form-inline row input-block-level justify-content-center mt-2" id="search-input" action="search">
-    <div class="input-group col-8">
-      <input type="text" class="form-control" aria-label="Recipient's username" id="product-search-input" name="name">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
-      </div>
-    </div>
-  </form>
-
-  <div class="list-group row align-items-center" id="search-results-list">
-
-  </div>
-
   <!-- Page Content -->
-  <div class="container mt-4 mb-4">
+
+  <div class="container mt-3">
 
     <div class="row justify-content-center">
+      <h1 class="text-dark font-weight-light col-lg-9 text-center mb-3">Your cart items</h1>
+      <div class="col-lg-9">
 
-      <div class="col-lg-9" id="product-card">
+        <div class="row" id="products-cards">
+          <div class="col-lg-4 col-md-6 mb-4" id="productId=' + element.product_id + '">
+            <div class="card h-100"><a href="product?productId=' + element.product_id + '"><img class="card-img-top"
+                  src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title"><a href="product?productId=' + element.product_id + '">' + element.product_name +
+                    '</a></h4>
+                <h5>$' + element.product_price + '</h5>
 
+                </p>
+              </div>
 
+            </div>
+          </div>
 
+          <div class="col-lg-4 col-md-6 mb-4" id="productId=' + element.product_id + '">
+            <div class="card h-100"><a href="product?productId=' + element.product_id + '"><img class="card-img-top"
+                  src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title"><a href="product?productId=' + element.product_id + '">' + element.product_name +
+                    '</a></h4>
+                <h5>$' + element.product_price + '</h5>
 
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
         <!-- /.row -->
 
       </div>
@@ -86,8 +100,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script src="../js/product.js"></script>
-  <script src="../js/searchQuickResult.js"></script>
+  <script src="../js/cart.js"></script>
 </body>
 
 </html>
