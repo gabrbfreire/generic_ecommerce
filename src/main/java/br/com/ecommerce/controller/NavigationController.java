@@ -26,4 +26,19 @@ public class NavigationController {
     public String search(){
         return "search";
     }
+
+    @GetMapping("cart")
+    public String cart(){
+        return "cart";
+    }
+
+    @GetMapping("login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("signin")
+    public String signin(){
+        return "signin";
+    }
 }
