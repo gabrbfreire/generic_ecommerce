@@ -51,6 +51,15 @@ public class ProductController {
         }
     }
 
+    @GetMapping(path = "/getProductsById")
+    public ResponseEntity<Product> getProductsById(@RequestParam Integer productId){
+        try {
+            return new ResponseEntity<>(productService.getProductsById(productId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping(path = "/addProduct")
     public ResponseEntity<HttpEntity> addProduct(@RequestParam String name, @RequestParam Double price, @RequestParam Integer category){
         try {

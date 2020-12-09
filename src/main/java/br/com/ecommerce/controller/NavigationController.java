@@ -11,4 +11,19 @@ public class NavigationController {
     public String index(){
         return "main";
     }
+
+    @GetMapping("/")
+    public String main(){
+        return "main";
+    }
+
+    @GetMapping("product")
+    public String product(){
+        return "product";
+    }
+
+    @GetMapping("search")
+    public String search(){
+        return "search";
+    }
 }
