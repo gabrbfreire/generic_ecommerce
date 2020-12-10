@@ -1,5 +1,3 @@
-console.log("a")
-
 $('#register-form').on('submit', function (e) {
   e.preventDefault();
 
