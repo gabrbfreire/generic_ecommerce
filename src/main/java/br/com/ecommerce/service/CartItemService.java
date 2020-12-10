@@ -19,10 +19,9 @@ public class CartItemService {
     @Autowired
     CartService cartService;
 
-    public void addItemUserCart(Integer productId, Integer productQuantity, User user) {
+    public void addItemUserCart(Integer productId, User user) {
         CartItem newCartItem = new CartItem();
         newCartItem.setProduct_id(productId);
-        newCartItem.setProduct_quantity(productQuantity);
         newCartItem.setCart_id(cartService.getCartByUser(user).getCart_id());
         cartItemRepository.save(newCartItem);
     }

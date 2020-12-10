@@ -50,6 +50,19 @@ body {
   margin-bottom: -1px;
 }
 
+#user-email{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-radius: 0;
+  margin-bottom: -1px;
+}
+
+#user-name{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+}
+
 #user-repeat-password{
   border-top-left-radius: 0;
   border-top-right-radius: 0;

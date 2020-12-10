@@ -17,21 +17,10 @@ public class CartController {
 
     //  -----CART-----
     //Create cart for registered user
-    @PostMapping(path="addCartYesLogin")
-    public ResponseEntity<HttpStatus> addCartWithLogin(@SessionAttribute("user") User user) {
+    @PostMapping(path="addCart")
+    public ResponseEntity<HttpStatus> addCart(@SessionAttribute("user") User user) {
         try{
-            cartService.addNewCartWithLogin(user);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    //Create cart for unregistered user
-    @PostMapping(path="addCartNoLogin")
-    public ResponseEntity<HttpStatus> addCartNoLogin() {
-        try{
-            cartService.addNewCartNoLogin();
+            cartService.addNewCart(user);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -38,11 +38,17 @@ public class UserController {
     }
 
     // Sign up
-    // Create user
     @PostMapping(path="/signup") // Map ONLY POST Requests
     public ResponseEntity<HttpStatus> addNewUser (@RequestParam String name, @RequestParam String email, @RequestParam String password){
         try{
-            userService.addNewUser(name, email, password);
+            try {
+                userService.addNewUser(name, email, password);
+            }catch (Exception e){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            if(createSession(email, password)!=null){
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -52,7 +58,7 @@ public class UserController {
     //--------------------
     //Get session
     @GetMapping(path = "getSession")
-    public ResponseEntity<Integer> addNewUser (@SessionAttribute("user") User user){
+    public ResponseEntity<Integer> getSession (@SessionAttribute("user") User user){
         try{
             return new ResponseEntity<>(user.getUser_id(), HttpStatus.OK);
         }catch (Exception e){

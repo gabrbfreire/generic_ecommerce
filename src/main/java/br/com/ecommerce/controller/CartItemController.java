@@ -18,9 +18,9 @@ public class CartItemController {
     CartItemService cartItemService;
 
     @PostMapping(path = "addItemUserCart")
-    public ResponseEntity<HttpStatus> addItemUserCart(@RequestParam Integer productId, @RequestParam Integer productQuantity, @SessionAttribute User user){
+    public ResponseEntity<HttpStatus> addItemUserCart(@RequestParam Integer productId, @SessionAttribute User user){
         try {
-            cartItemService.addItemUserCart(productId, productQuantity, user);
+            cartItemService.addItemUserCart(productId, user);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -65,6 +65,4 @@ public class CartItemController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
 }

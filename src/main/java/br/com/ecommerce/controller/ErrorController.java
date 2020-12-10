@@ -8,14 +8,14 @@ import java.io.IOException;
 @ControllerAdvice
 public final class ErrorController {
 
-    @ExceptionHandler(IOException.class)
-    public String handleAbortedConnection(final IOException ex) {
-        // prevents ClientAbortException
-        if (ex.getClass().getName().equals("org.apache.catalina.connector.ClientAbortException")) {
-            return null;
-        }
-
-        return "errorPage";
-    }
+//    @ExceptionHandler(IOException.class)
+//    public String handleAbortedConnection(final IOException ex) {
+//        // prevents ClientAbortException
+//        if (ex.getClass().getName().equals("org.apache.catalina.connector.ClientAbortException")) {
+//            return null;
+//        }
+//
+//        return "errorPage";
+//    }
 
 }
