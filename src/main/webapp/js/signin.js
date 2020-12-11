@@ -15,6 +15,13 @@ $('#register-form').on('submit', function (e) {
 
 function register(name, email, password) {
   $.ajax({
+    type: "GET",
+    async: "false",
+    url: "logout",
+    success: (data) => makeProductsHTML(data)
+  });
+
+  $.ajax({
     type: "POST",
     url: "signup",
     data: { name: name, email: email, password: password },

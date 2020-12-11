@@ -1,12 +1,15 @@
 package br.com.ecommerce.controller;
 
 import br.com.ecommerce.entity.User;
+import br.com.ecommerce.service.CartItemService;
 import br.com.ecommerce.service.CartService;
 import br.com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 
 @RestController
@@ -15,17 +18,23 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     @Autowired
     private CartService cartService;
+    @Autowired
+    private CartItemService cartItemService;
 
 //  -----USER-----
 //  Login
 //  Get user
     @PostMapping(path="/login")
-    public ResponseEntity<HttpStatus> getAllUsers(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<HttpStatus> getAllUsers(@RequestParam String email, @RequestParam String password, HttpSession session) {
         try{
             if(createSession(email, password)!=null){
+                System.out.println(createSession(email, password));
+                System.out.println(session.getAttribute("clickedProduct"));
+                if(session.getAttribute("clickedProduct")!=null){
+                    cartItemService.addItemUserCart((Integer) session.getAttribute("clickedProduct"), (User) session.getAttribute("user"));
+                }
                 return new ResponseEntity<>(HttpStatus.OK);
             }else{
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
