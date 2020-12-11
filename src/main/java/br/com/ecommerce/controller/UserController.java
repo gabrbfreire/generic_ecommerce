@@ -7,13 +7,14 @@ import br.com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
 
-@RestController
-@SessionAttributes("user")  //Session attributes
+@Controller
+@SessionAttributes({"user", "clickedProduct"})  //Session attributes
 public class UserController {
 
     @Autowired
@@ -30,11 +31,6 @@ public class UserController {
     public ResponseEntity<HttpStatus> getAllUsers(@RequestParam String email, @RequestParam String password, HttpSession session) {
         try{
             if(createSession(email, password)!=null){
-                System.out.println(createSession(email, password));
-                System.out.println(session.getAttribute("clickedProduct"));
-                if(session.getAttribute("clickedProduct")!=null){
-                    cartItemService.addItemUserCart((Integer) session.getAttribute("clickedProduct"), (User) session.getAttribute("user"));
-                }
                 return new ResponseEntity<>(HttpStatus.OK);
             }else{
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

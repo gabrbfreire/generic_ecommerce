@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@SessionAttributes("clickedProduct")
 public class ProductController {
 
     @Autowired
@@ -70,17 +70,22 @@ public class ProductController {
     }
 
     @PostMapping(path = "/addClickedProduct")
-    public ResponseEntity<HttpEntity> addClickedProduct(@RequestParam Integer productId){
+    public ResponseEntity<HttpEntity> addClickedProduct(@RequestParam Integer productId, HttpSession session){
         try {
-            createClickedProduct(productId);
+            session.setAttribute("clickedProduct", productId);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @ModelAttribute("clickedProduct") //Session model
-    private Integer createClickedProduct(Integer productId){
-        return productId;
+    //Get session
+    @GetMapping(path = "getProductSession")
+    public ResponseEntity<String> getProductSession (HttpSession session){
+        try{
+            return new ResponseEntity<>(session.getAttribute("clickedProduct").toString(), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

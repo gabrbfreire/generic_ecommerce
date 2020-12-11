@@ -12,10 +12,27 @@ function makeProductsHTML(data) {
 window.onload = () => {
   $.ajax({
     type: "GET",
-    url: "getProductsUserCart",
+    async: false,
+    url: "getProductSession",
     success: (data) => {
-      makeProductsHTML(data)
-      console.log(data)
+      $.ajax({
+        type: "POST",
+        async: false,
+        url: "addItemUserCart",
+        data: {
+          productId: data,
+        },
+        success: () => {
+          $.ajax({
+            type: "GET",
+            async: false,
+            url: "getProductsUserCart",
+            success: (data) => {
+              makeProductsHTML(data)
+            }
+          })
+        }
+      })
     }
   })
 };

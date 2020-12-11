@@ -11,13 +11,6 @@ $('#login-form').on('submit', function (e) {
 
 function login(email, password) {
   $.ajax({
-    type: "GET",
-    async: "false",
-    url: "logout",
-    success: (data) => makeProductsHTML(data)
-  });
-
-  $.ajax({
     type: "POST",
     url: "login",
     data: { email: email, password: password },
