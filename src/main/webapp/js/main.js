@@ -1,28 +1,24 @@
 //CATEGORIES AND PRODUCTS
 //Gets products and creates cards
 function getProductsByCategory(category = 1) {
-  $(document).ready(function () {
-    $.ajax({
-      type: "GET",
-      url: "getProductsByCategoryId",
-      data: {
-        categoryId: category
-      },
-      success: (data) => makeProductsHTML(data)
-    })
-  });
+  $.ajax({
+    type: "GET",
+    url: "getProductsByCategoryId",
+    data: {
+      categoryId: category
+    },
+    success: (data) => makeProductsHTML(data)
+  })
 }
 
 
 //Gets categories and creates categories list
 function getCategories() {
-  $(document).ready(function () {
-    $.ajax({
-      type: "GET",
-      url: "getCategories",
-      success: (data) => makeCategoriesHTML(data)
-    })
-  });
+  $.ajax({
+    type: "GET",
+    url: "getCategories",
+    success: (data) => makeCategoriesHTML(data)
+  })
 };
 
 function makeCategoriesHTML(data) {

@@ -20,4 +20,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     @Query(value = "CALL SelectProductsByCategoryId(:categoryId)", nativeQuery = true)
     List<Product> getProductsByCategoryId(@Param("categoryId") Integer categoryId);
+
+    @Query(value = "CALL SelectProductsByCartId(:cartId)", nativeQuery = true)
+    List<Product> getProductsByCartId(@Param("cartId") Integer cartId);
 }

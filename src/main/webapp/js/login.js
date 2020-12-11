@@ -1,3 +1,5 @@
+
+
 $('#login-form').on('submit', function (e) {
   e.preventDefault();
 
@@ -16,7 +18,7 @@ function login(email, password) {
       window.location.href = 'cart'
     },
     error: function () {
-      $('#result').text('User already exists');
+      $('#result').text('Incorrect email or password');
     }
   })
 }

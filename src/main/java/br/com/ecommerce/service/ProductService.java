@@ -38,4 +38,8 @@ public class ProductService {
     public List<Product> getProductsByCategoryId(Integer categoryId) {
         return productRepository.getProductsByCategoryId(categoryId);
     }
+
+    public List<Product> getProductsByCartId(Integer cartId) {
+        return productRepository.getProductsByCartId(cartId);
+    }
 }

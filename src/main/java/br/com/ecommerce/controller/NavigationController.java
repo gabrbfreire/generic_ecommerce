@@ -42,7 +42,7 @@ public class NavigationController {
     }
 
     @GetMapping("cart")
-    public String boards(HttpSession session) {
+    public String cart(HttpSession session) {
         if(session.getAttribute("user")==null){
             return "login";
         }else{

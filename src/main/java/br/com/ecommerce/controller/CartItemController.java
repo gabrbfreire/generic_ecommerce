@@ -1,8 +1,11 @@
 package br.com.ecommerce.controller;
 
 import br.com.ecommerce.entity.CartItem;
+import br.com.ecommerce.entity.Product;
 import br.com.ecommerce.entity.User;
 import br.com.ecommerce.service.CartItemService;
+import br.com.ecommerce.service.CartService;
+import br.com.ecommerce.service.ProductService;
 import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +18,11 @@ import java.util.List;
 public class CartItemController {
 
     @Autowired
-    CartItemService cartItemService;
+    private CartItemService cartItemService;
+    @Autowired
+    private CartService cartService;
+    @Autowired
+    private ProductService productService;
 
     @PostMapping(path = "addItemUserCart")
     public ResponseEntity<HttpStatus> addItemUserCart(@RequestParam Integer productId, @SessionAttribute User user){
@@ -31,6 +38,15 @@ public class CartItemController {
     public ResponseEntity<List<CartItem>> getItemsUserCart(@SessionAttribute User user){
         try {
             return new ResponseEntity<>(cartItemService.getItemsUserCart(user), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(path = "getProductsUserCart")
+    public ResponseEntity<List<Product>> getProductsUserCart(@SessionAttribute User user){
+        try {
+            return new ResponseEntity<>(productService.getProductsByCartId(cartService.getCartByUser(user).getCart_id()), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

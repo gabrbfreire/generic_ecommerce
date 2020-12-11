@@ -1,6 +1,7 @@
 package br.com.ecommerce.controller;
 
 import br.com.ecommerce.entity.User;
+import br.com.ecommerce.service.CartService;
 import br.com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CartService cartService;
 
 //  -----USER-----
 //  Login
@@ -46,8 +49,10 @@ public class UserController {
             }catch (Exception e){
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-            if(createSession(email, password)!=null){
-                return new ResponseEntity<>(HttpStatus.OK);
+            try {
+                cartService.addNewCart(createSession(email, password));
+            }catch (Exception e){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
@@ -58,9 +63,9 @@ public class UserController {
     //--------------------
     //Get session
     @GetMapping(path = "getSession")
-    public ResponseEntity<Integer> getSession (@SessionAttribute("user") User user){
+    public ResponseEntity<String> getSession (@SessionAttribute("user") User user){
         try{
-            return new ResponseEntity<>(user.getUser_id(), HttpStatus.OK);
+            return new ResponseEntity<>(user.getUser_name(), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
