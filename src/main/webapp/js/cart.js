@@ -2,7 +2,7 @@ function makeProductsHTML(data) {
   let productsHTML = "";
   $('#products-cards').empty();
   data.forEach(element => {
-    productsHTML += '<div class="col-lg-4 col-md-6 mb-4" id="productId=' + element.cart + '"><div class="card h-100"><a href="product?productId=' + element.product_id + '"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a><div class="card-body"><h4 class="card-title"><a href="product?productId=' + element.product_id + '">' + element.product_name + '</a></h4><h5>$' + element.product_price + '</h5><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p></div><div class="card-footer"><small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small></div></div></div>';
+    productsHTML += ' <div class="col-12 mb-4" id="productId=' + element.cart + '"><div class="card h-100"><div class="row"><a href="product?productId=' + element.product_id + '" class="col-12 col-sm-5 mh-50"><img class="card-img-top h-100 w-100" src="http://placehold.it/300x100" alt=""></a ><div class="card-body col-12 col-sm-5"><h4 class="card-title"><a href="product?productId=' + element.product_id + '">' + element.product_name + '</a></h4><h5>$' + element.product_price + '</h5></div><div class="col-2"><button type="button" class="btn btn-danger align-middle">Remove</button></div></div ></div ></div>';
   });
   //add product description and photo
   $('#products-cards').append(productsHTML);
@@ -12,12 +12,10 @@ function makeProductsHTML(data) {
 window.onload = () => {
   $.ajax({
     type: "GET",
-    async: false,
     url: "getProductSession",
     success: (data) => {
       $.ajax({
         type: "POST",
-        async: false,
         url: "addItemUserCart",
         data: {
           productId: data,
@@ -25,12 +23,20 @@ window.onload = () => {
         success: () => {
           $.ajax({
             type: "GET",
-            async: false,
             url: "getProductsUserCart",
             success: (data) => {
               makeProductsHTML(data)
             }
           })
+        }
+      })
+    },
+    error: () => {
+      $.ajax({
+        type: "GET",
+        url: "getProductsUserCart",
+        success: (data) => {
+          makeProductsHTML(data)
         }
       })
     }
