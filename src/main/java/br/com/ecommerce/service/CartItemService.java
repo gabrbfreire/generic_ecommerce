@@ -55,4 +55,8 @@ public class CartItemService {
     public void removeAllItemsUserCart(User user) {
         cartItemRepository.removeAllItemsUserCart(cartService.getCartByUser(user).getCart_id());
     }
+
+    public void removeCartItemByProductAndCartId(Integer cartId, Integer productId){
+        cartItemRepository.DeleteCartItemByProductAndCartId(cartId, productId);
+    }
 }

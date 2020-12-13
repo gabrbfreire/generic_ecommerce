@@ -23,4 +23,7 @@ public interface CartItemRepository extends CrudRepository<CartItem, Integer> {
     @Query(value = "CALL SelectCartItemsByCartId(:cartId);", nativeQuery = true)
     List<CartItem> getCartItemsByCartId(@Param("cartId") Integer cartId);
 
+    @Procedure(name = "DeleteCartItemByProductAndCartId")
+    void DeleteCartItemByProductAndCartId(@Param("cartId") Integer cartId, @Param("productId") Integer productId);
+
 }

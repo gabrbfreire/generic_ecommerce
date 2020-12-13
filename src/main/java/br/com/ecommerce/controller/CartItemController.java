@@ -53,9 +53,9 @@ public class CartItemController {
     }
 
     @DeleteMapping(path = "removeItemUserCart")
-    public ResponseEntity<HttpStatus> removeItemUserCart(@RequestParam Integer cartItemId){
+    public ResponseEntity<HttpStatus> removeCartItemByProductAndCartId(@RequestParam Integer cartId, @RequestParam Integer productId){
         try {
-            cartItemService.removeItemUserCart(cartItemId);
+            cartItemService.removeCartItemByProductAndCartId(cartId, productId);
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
