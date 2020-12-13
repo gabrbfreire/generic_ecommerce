@@ -40,7 +40,6 @@ window.onload = () => {
     url: "getUserCart",
     success: (data) => {
       cartId = data.cart_id;
-      console.log(cartId);
     }
   })
 
