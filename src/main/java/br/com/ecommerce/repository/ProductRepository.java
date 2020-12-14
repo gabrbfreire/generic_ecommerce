@@ -1,6 +1,7 @@
 package br.com.ecommerce.repository;
 
 import br.com.ecommerce.entity.Product;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -18,6 +19,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
     @Query(value = "CALL SelectProductsByName(:name)", nativeQuery = true)
     List<Product> findProductsByName(@Param("name") String name);
 
+    @Cacheable("products")
     @Query(value = "CALL SelectProductsByCategoryId(:categoryId)", nativeQuery = true)
     List<Product> getProductsByCategoryId(@Param("categoryId") Integer categoryId);
 
