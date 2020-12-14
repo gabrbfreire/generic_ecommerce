@@ -11,7 +11,6 @@ function getProductsByCategory(category = 1) {
   })
 }
 
-
 //Gets categories and creates categories list
 function getCategories() {
   $.ajax({

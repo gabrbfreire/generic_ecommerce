@@ -83,7 +83,10 @@ public class ProductController {
     @GetMapping(path = "getProductSession")
     public ResponseEntity<String> getProductSession (HttpSession session){
         try{
-            return new ResponseEntity<>(session.getAttribute("clickedProduct").toString(), HttpStatus.OK);
+            String clickedProduct = session.getAttribute("clickedProduct").toString();
+            session.removeAttribute("clickedProduct");
+
+            return new ResponseEntity<>(clickedProduct, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

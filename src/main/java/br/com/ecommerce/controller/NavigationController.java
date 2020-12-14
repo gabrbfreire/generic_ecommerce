@@ -32,21 +32,26 @@ public class NavigationController {
     }
 
     @GetMapping("login")
-    public String login(){
-        return "login";
+    public String login(HttpSession session){
+        if(session.getAttribute("user")==null){
+            return "login";
+        }
+        return "main";
     }
 
     @GetMapping("signin")
-    public String signin(){
-        return "signin";
+    public String signin(HttpSession session){
+        if(session.getAttribute("user")==null){
+            return "signin";
+        }
+        return "main";
     }
 
     @GetMapping("cart")
     public String cart(HttpSession session) {
         if(session.getAttribute("user")==null){
             return "login";
-        }else{
-            return "cart";
         }
+        return "cart";
     }
 }
