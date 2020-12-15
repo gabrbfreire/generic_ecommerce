@@ -14,6 +14,7 @@ public class Product {
     private String product_name;
     private Double product_price;
     private Integer categories_id;
+    private String product_image_link;
 
     public Integer getProduct_id() {
         return product_id;
@@ -41,5 +42,13 @@ public class Product {
 
     public void setCategories_id(Integer categories_id) {
         this.categories_id = categories_id;
+    }
+
+    public String getProduct_image_link() {
+        return product_image_link;
+    }
+
+    public void setProduct_image_link(String product_image_link) {
+        this.product_image_link = product_image_link;
     }
 }
