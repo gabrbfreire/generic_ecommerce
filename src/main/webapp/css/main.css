@@ -27,5 +27,7 @@ input{
   } 
 
 .card-img-top{
-    
+    width: 50% !important;
+    padding: 10px;
+    padding-bottom: 0 !important;
 }
