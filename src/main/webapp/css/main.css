@@ -31,3 +31,7 @@ input{
     padding: 10px;
     padding-bottom: 0 !important;
 }
+
+.card-title{
+    height: 15vh !important;
+}
