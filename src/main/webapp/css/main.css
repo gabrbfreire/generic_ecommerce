@@ -32,6 +32,15 @@ input{
     padding-bottom: 0 !important;
 }
 
+#card-img{
+    width: 25% !important;
+    padding: 10px;
+    padding-bottom: 0 !important;
+}
 .card-title{
-    height: 15vh !important;
+    height: 10vh !important;
+}
+
+#card-title{
+    height: 6vh !important;
 }

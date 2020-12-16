@@ -23,7 +23,7 @@ $.ajax({
 
 function makeProductHTML(data) {
   let productHTML = "";
-  productHTML += '<div class="card h-100"><a href="#"><img class="card-img-top" src="http://placehold.it/700x200" alt=""></a><div class="card-body"><h4 class="card-title"><a href="#">' + data.product_name + '</a></h4><h5>$ ' + data.product_price + '</h5><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p ></div ><div class="card-footer"><small class="text-muted">★ ★ ★ ★ ☆</small><button type="button" class="btn btn-primary float-right" id="add-to-cart-button">Add to cart</button></div></div >';
+  productHTML += '<div class="card h-100"><a href="#" class="d-flex justify-content-center"><img class="card-img-top" id="card-img" src="' + data.product_image_link + '" alt=""></a><div class="card-body"><h4 class="card-title" id="card-title"><a href="#">' + data.product_name + '</a></h4><h5>$ ' + data.product_price + '</h5><p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p ></div ><div class="card-footer"><small class="text-muted">★ ★ ★ ★ ☆</small><button type="button" class="btn btn-primary float-right" id="add-to-cart-button">Add to cart</button></div></div >';
   $('#product-card').append(productHTML);
 
   console.log(userData.length)
