@@ -3,9 +3,7 @@ package br.com.ecommerce.service;
 import br.com.ecommerce.entity.CartItem;
 import br.com.ecommerce.entity.User;
 import br.com.ecommerce.repository.CartItemRepository;
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.bind.BindException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

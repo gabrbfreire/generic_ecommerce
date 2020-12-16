@@ -6,7 +6,6 @@ import br.com.ecommerce.entity.User;
 import br.com.ecommerce.service.CartItemService;
 import br.com.ecommerce.service.CartService;
 import br.com.ecommerce.service.ProductService;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
