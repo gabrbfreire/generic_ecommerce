@@ -11,4 +11,6 @@ Technologies:
 * Bootstrap
 * MySQL
 
+Heroku link: https://generic-ecommercee.herokuapp.com/
+
 ![Screenshot](https://user-images.githubusercontent.com/50384743/102388332-5b179c00-3fb0-11eb-99d5-250c49b4b3e6.png)
